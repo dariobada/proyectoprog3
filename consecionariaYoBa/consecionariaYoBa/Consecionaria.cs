@@ -21,10 +21,12 @@ namespace consecionariaYoBa
         {          
             autos.Add(auto);           
         }
+
         public List<Auto> devolverAutosConsecionaria()
         {
             return autos;
         }
+
         public void modificarAutoConsecionaria(Auto auto, int idModificar)
         {
             List<Auto> listAux = new List<Auto>();
@@ -48,15 +50,57 @@ namespace consecionariaYoBa
 
         }
 
-        public int obtenerIdAuto()
+        public void eliminarAutoConsecionaria( int idEliminar)
         {
-            int idaux = 1;
+            List<Auto> listAux = new List<Auto>();
+            int contador = 0;
+            foreach (Auto autoaux in autos)
+            {
+                listAux.Add(autoaux);
+
+            }
+
+            autos.Clear();
+
+            foreach (Auto autoaux in listAux)
+            {
+                if (idEliminar != autoaux.devolverId())
+                {
+                    autos.Add(autoaux);
+           
+                }
+                contador++;
+            }
+
+
+        }
+
+        public Auto devolverAutoPorId(int id)
+        {
+            foreach (Auto autoaux in autos)
+            {
+               if (autoaux.devolverId()== id)
+                {
+                    return autoaux;
+                }
+
+            }
+            return null;
+
+        }
+
+        public int obtenerIdAuto() 
+        {
+            int idaux = 0;
 
             foreach(Auto auto_aux in autos)
             {
-                idaux++;
+                if (auto_aux.devolverId() > idaux)
+                {
+                    idaux = auto_aux.devolverId();
+                }
             }
-
+            idaux++;
             return idaux;
 
         }

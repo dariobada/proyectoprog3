@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label1;
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnVentas = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(79, 97);
+            this.btnBuscar.Location = new System.Drawing.Point(75, 114);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(123, 54);
             this.btnBuscar.TabIndex = 0;
@@ -47,16 +50,16 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(12, 20);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 9);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(52, 18);
             this.lblUsuario.TabIndex = 1;
             this.lblUsuario.Text = "label1";
-            this.lblUsuario.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // btnVentas
             // 
-            this.btnVentas.Location = new System.Drawing.Point(265, 97);
+            this.btnVentas.Location = new System.Drawing.Point(263, 114);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(126, 54);
             this.btnVentas.TabIndex = 2;
@@ -64,11 +67,33 @@
             this.btnVentas.UseVisualStyleBackColor = true;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(119, 58);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(220, 29);
+            label1.TabIndex = 28;
+            label1.Text = "Seleccione una opción";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(161, 189);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(126, 54);
+            this.btnSalir.TabIndex = 29;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // FrmSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 278);
+            this.ClientSize = new System.Drawing.Size(466, 278);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(label1);
             this.Controls.Add(this.btnVentas);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnBuscar);
@@ -85,6 +110,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnVentas;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

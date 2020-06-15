@@ -19,9 +19,9 @@ namespace consecionariaYoBa
         public FrmSistema()
         {
             InitializeComponent();
-            frmBuscar = new FrmBuscar(this);
-           
+            frmBuscar = new FrmBuscar(this);          
         }
+
         public FrmSistema(FrmLogin login)
         {
             InitializeComponent();
@@ -38,34 +38,23 @@ namespace consecionariaYoBa
             frmBuscar.Show();
             this.Hide();
             frmBuscar.CargaGrillaAutos();
-
-        }
-
-        
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            //frmAgregar.Show();
-            this.Hide();
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void FrmSistema_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = "Bienvenido " + frmLogin.devolverUsuario();
-          
+            lblUsuario.Text = "Bienvenido " + frmLogin.devolverUsuario();        
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
             frmVentas.Show();
+            frmVentas.CargaGrillaVentas();
             this.Hide();
+        }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();         
         }
     }
 }

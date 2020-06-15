@@ -97,8 +97,10 @@
     <Compile Include="FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloComercial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Venta.cs" />
     <EmbeddedResource Include="FrmAgregar.resx">
       <DependentUpon>FrmAgregar.cs</DependentUpon>
     </EmbeddedResource>

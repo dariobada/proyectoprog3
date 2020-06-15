@@ -30,6 +30,16 @@
         {
             this.BtnVolverBuscar = new System.Windows.Forms.Button();
             this.DgvAutos = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCondicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEquipamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPuertas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.txtIdModificar = new System.Windows.Forms.TextBox();
@@ -43,15 +53,6 @@
             this.lblIdVender = new System.Windows.Forms.Label();
             this.txtIdVender = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCondicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEquipamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPuertas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvAutos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,6 +79,7 @@
             this.colMarca,
             this.colModelo,
             this.colColor,
+            this.colPrecio,
             this.colCondicion,
             this.colKm,
             this.colEquipamiento,
@@ -86,8 +88,68 @@
             this.DgvAutos.Location = new System.Drawing.Point(36, 164);
             this.DgvAutos.Name = "DgvAutos";
             this.DgvAutos.ReadOnly = true;
-            this.DgvAutos.Size = new System.Drawing.Size(967, 220);
+            this.DgvAutos.Size = new System.Drawing.Size(1043, 220);
             this.DgvAutos.TabIndex = 1;
+            // 
+            // colId
+            // 
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // colMarca
+            // 
+            this.colMarca.HeaderText = "Marca";
+            this.colMarca.Name = "colMarca";
+            this.colMarca.ReadOnly = true;
+            // 
+            // colModelo
+            // 
+            this.colModelo.HeaderText = "Modelo";
+            this.colModelo.Name = "colModelo";
+            this.colModelo.ReadOnly = true;
+            // 
+            // colColor
+            // 
+            this.colColor.HeaderText = "Color";
+            this.colColor.Name = "colColor";
+            this.colColor.ReadOnly = true;
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.ReadOnly = true;
+            // 
+            // colCondicion
+            // 
+            this.colCondicion.HeaderText = "Condición";
+            this.colCondicion.Name = "colCondicion";
+            this.colCondicion.ReadOnly = true;
+            // 
+            // colKm
+            // 
+            this.colKm.HeaderText = "Km";
+            this.colKm.Name = "colKm";
+            this.colKm.ReadOnly = true;
+            // 
+            // colEquipamiento
+            // 
+            this.colEquipamiento.HeaderText = "Equipamiento";
+            this.colEquipamiento.Name = "colEquipamiento";
+            this.colEquipamiento.ReadOnly = true;
+            // 
+            // colPuertas
+            // 
+            this.colPuertas.HeaderText = "Puertas";
+            this.colPuertas.Name = "colPuertas";
+            this.colPuertas.ReadOnly = true;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.HeaderText = "Descripción";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -113,11 +175,11 @@
             // 
             // txtIdModificar
             // 
-            this.txtIdModificar.Location = new System.Drawing.Point(47, 19);
+            this.txtIdModificar.Location = new System.Drawing.Point(28, 23);
             this.txtIdModificar.Name = "txtIdModificar";
             this.txtIdModificar.Size = new System.Drawing.Size(100, 20);
             this.txtIdModificar.TabIndex = 1;
-            this.txtIdModificar.TextChanged += new System.EventHandler(this.txtIdModificar_TextChanged);
+
             // 
             // lblIdModificar
             // 
@@ -148,6 +210,7 @@
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblIdEliminar
             // 
@@ -160,7 +223,7 @@
             // 
             // txtIdEliminar
             // 
-            this.txtIdEliminar.Location = new System.Drawing.Point(28, 18);
+            this.txtIdEliminar.Location = new System.Drawing.Point(28, 23);
             this.txtIdEliminar.Name = "txtIdEliminar";
             this.txtIdEliminar.Size = new System.Drawing.Size(100, 20);
             this.txtIdEliminar.TabIndex = 4;
@@ -198,7 +261,7 @@
             // 
             // txtIdVender
             // 
-            this.txtIdVender.Location = new System.Drawing.Point(28, 18);
+            this.txtIdVender.Location = new System.Drawing.Point(28, 23);
             this.txtIdVender.Name = "txtIdVender";
             this.txtIdVender.Size = new System.Drawing.Size(100, 20);
             this.txtIdVender.TabIndex = 4;
@@ -213,65 +276,11 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // colId
-            // 
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            // 
-            // colMarca
-            // 
-            this.colMarca.HeaderText = "Marca";
-            this.colMarca.Name = "colMarca";
-            this.colMarca.ReadOnly = true;
-            // 
-            // colModelo
-            // 
-            this.colModelo.HeaderText = "Modelo";
-            this.colModelo.Name = "colModelo";
-            this.colModelo.ReadOnly = true;
-            // 
-            // colColor
-            // 
-            this.colColor.HeaderText = "Color";
-            this.colColor.Name = "colColor";
-            this.colColor.ReadOnly = true;
-            // 
-            // colCondicion
-            // 
-            this.colCondicion.HeaderText = "Condición";
-            this.colCondicion.Name = "colCondicion";
-            this.colCondicion.ReadOnly = true;
-            // 
-            // colKm
-            // 
-            this.colKm.HeaderText = "Km";
-            this.colKm.Name = "colKm";
-            this.colKm.ReadOnly = true;
-            // 
-            // colEquipamiento
-            // 
-            this.colEquipamiento.HeaderText = "Equipamiento";
-            this.colEquipamiento.Name = "colEquipamiento";
-            this.colEquipamiento.ReadOnly = true;
-            // 
-            // colPuertas
-            // 
-            this.colPuertas.HeaderText = "Puertas";
-            this.colPuertas.Name = "colPuertas";
-            this.colPuertas.ReadOnly = true;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.HeaderText = "Descripción";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.ReadOnly = true;
-            // 
             // FrmBuscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 481);
+            this.ClientSize = new System.Drawing.Size(1109, 481);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -312,6 +321,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn colModelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCondicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKm;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEquipamiento;

@@ -18,16 +18,11 @@ namespace consecionariaYoBa
         private Form frmSistema;
         private FrmModificar frmModificar;
         private FrmCliente frmCliente;
-        public FrmBuscar()
-        {
-            InitializeComponent();
-        }
         
         public FrmBuscar(Form sistema)
         {
             frmSistema = sistema;
-            InitializeComponent();
-            //CargaGrillaAutos();
+            InitializeComponent();          
             frmAgregar = new FrmAgregar(this);
             frmModificar = new FrmModificar(this);
             frmCliente = new FrmCliente(this);
@@ -42,66 +37,50 @@ namespace consecionariaYoBa
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         public void CargaGrillaAutos()
         {
-            DgvAutos.Rows.Clear();
+            
             Consecionaria cons = new Consecionaria();
             List<Auto> autos = new List<Auto>();
 
-            //if (File.Exists("consecionaria.txt"))
-            //{
-            //    Stream flujo2 = File.OpenRead("consecionaria.txt");
-            //    BinaryFormatter deserializer = new BinaryFormatter();
-            //    cons = (Consecionaria)deserializer.Deserialize(flujo2);
-            //    flujo2.Close();
-
-            //}
-            
+            DgvAutos.Rows.Clear();
+            //Obtenemos los autos de la consecionaria y los cargamos en la grilla
             autos = cons.devolverAutosConsecionaria();
             
             foreach(Auto autonuevo in autos)
             {
-                DgvAutos.Rows.Add(autonuevo.devolverId(), autonuevo.devolverMarca(), autonuevo.devolverModelo(), autonuevo.devolverColor(), autonuevo.devolverCondicion(), autonuevo.devolverKm(), autonuevo.devolverEquipamiento(), autonuevo.devolverPuertas(), autonuevo.devolverDescripcion());
+                DgvAutos.Rows.Add(autonuevo.devolverId(), autonuevo.devolverMarca(), autonuevo.devolverModelo(), autonuevo.devolverColor(), autonuevo.devolverPrecio(), autonuevo.devolverCondicion(), autonuevo.devolverKm(), autonuevo.devolverEquipamiento(), autonuevo.devolverPuertas(), autonuevo.devolverDescripcion());
             } 
-            
-            
-                /* Auto auto = new Auto(5555, "Peugeot", "207", "Rosa");
-                DgvAutos.Rows.Add(1111, "Toyota", "Hilux", "Blanco", "Nuevo", 0, "ABS;Airbags", 3, "");
-                DgvAutos.Rows.Add(2222, "Peugeot", "307", "Azul", "Usado", 12000, "", 5, "Casi nuevo");
-                DgvAutos.Rows.Add(3333, "Toyota", "Hilux", "Verde", "Usado", 100000, "", 3, "");
-                DgvAutos.Rows.Add(4444, "Ford", "Fiest", "Blanco", "Nuevo", 0, "ABS", 3, "");
-                */
-            }
+                      
+        }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAgregar.Show();
             this.Hide();
-           
+            frmAgregar.inicializarFormulario();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int auxid1 = 0;
+            int auxpuertas = 0;
+            int auxkm = 0;
+            int precioaux = 0;
             string auxmarca = "";
             string auxmodelo = "";
-            string auxcolor = "";
-            int auxpuertas = 0;
-            string auxcondicion = "";
-            int auxkm = 0;
+            string auxcolor = "";            
+            string auxcondicion = "";           
             string auxequipamiento = "";
             string auxdescripcion = "";
-            
-          
+                               
             if (!Int32.TryParse(txtIdModificar.Text, out auxid1))
             {
                 Console.WriteLine($@"No se pudo convertir'{txtIdModificar.Text}'");
             }
+
+            //Buscamos en la grilla si existe el ID ingresado
+
             foreach (DataGridViewRow fila in DgvAutos.Rows)
             {
                 if (auxid1 == (int)fila.Cells["colId"].Value)
@@ -114,9 +93,10 @@ namespace consecionariaYoBa
                     auxkm = (int)fila.Cells["colKm"].Value;
                     auxequipamiento = (string)fila.Cells["colEquipamiento"].Value;
                     auxdescripcion = (string)fila.Cells["colDescripcion"].Value;
-
+                    precioaux = (int)fila.Cells["colPrecio"].Value;
                 }          
             }
+
             if(auxmarca == "")
             {
                 MessageBox.Show("Debe ingresar un ID existente", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -125,19 +105,83 @@ namespace consecionariaYoBa
             {
                 frmModificar.Show();
                 this.Hide();
-                frmModificar.precargarDatos(auxid1, auxmarca, auxmodelo, auxcolor, auxpuertas, auxcondicion, auxkm, auxequipamiento, auxdescripcion );
+                //Invocamos al siguiente método para precargar los datos del formulario "Modificar"
+                frmModificar.precargarDatos(auxid1, auxmarca, auxmodelo, auxcolor, precioaux, auxpuertas, auxcondicion, auxkm, auxequipamiento, auxdescripcion );
             }
         }
 
         private void btnVender_Click(object sender, EventArgs e)
         {
-            frmCliente.Show();
-            this.Hide();
+            int idaux = 0;
+            bool flag = false;
+
+            if (!Int32.TryParse(txtIdVender.Text, out idaux))
+            {
+                Console.WriteLine($@"No se pudo convertir'{txtIdVender.Text}'");
+            }
+
+            //Recorremos la grilla para verificar si existe el ID ingresado
+
+            foreach (DataGridViewRow fila in DgvAutos.Rows)
+            {
+                if (idaux == (int)fila.Cells["colId"].Value)
+                {
+                    flag = true;
+                }
+            }
+
+            if (flag == false)
+            {
+                MessageBox.Show("Debe ingresar un ID existente", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                frmCliente.Show();
+                //Invocamos al siguiente método para enviar al formulario "cliente" el ID de la venta
+                frmCliente.cargarIdVenta(idaux); 
+                this.Hide();               
+            }
+        
         }
 
-        private void txtIdModificar_TextChanged(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
+            Consecionaria cons;
+            int idaux = 0;
+            bool flag = false;
+            
+            if (!Int32.TryParse(txtIdEliminar.Text, out idaux))
+            {
+                Console.WriteLine($@"No se pudo convertir'{txtIdEliminar.Text}'");
+            }
+            //Recorremos la grilla para verificar si existe el ID ingresado
+            foreach (DataGridViewRow fila in DgvAutos.Rows)
+            {
+                if (idaux == (int)fila.Cells["colId"].Value)
+                {
+                    flag = true;
+                }
+            }
 
+            if (flag == false)
+            {
+                MessageBox.Show("Debe ingresar un ID existente", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("¿Está seguro que desea eliminar el auto con Id: " + idaux + "?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cons = new Consecionaria();
+                    //Se elimina el auto de la lista de "Autos" de consecionaria
+                    cons.eliminarAutoConsecionaria(idaux);
+                    //Se graba el archivo con la lista de auto de consecionaria
+                    Administracion.actualizarAutosArchivo(cons);
+                    MessageBox.Show("Auto eliminado correctamente");
+                    CargaGrillaAutos();
+                }
+
+            }
+                      
         }
     }
 }

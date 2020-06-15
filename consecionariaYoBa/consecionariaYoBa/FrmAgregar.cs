@@ -14,54 +14,23 @@ namespace consecionariaYoBa
 {
 
     public partial class FrmAgregar : Form
-    {
-       // private Form frmSistema;
+    {     
         private FrmBuscar frmBuscar;
 
         public FrmAgregar()
         {
             InitializeComponent();
         }
+
         public FrmAgregar(FrmBuscar buscar)
         {
-            frmBuscar = buscar;
-            //frmSistema = sistema;
+            frmBuscar = buscar;          
             InitializeComponent();
             comboColor.Items.Add("Rojo");
             comboColor.Items.Add("Azul");
             comboColor.Items.Add("Verde");
             comboColor.Items.Add("Amarillo");
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboColor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-        
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -71,21 +40,19 @@ namespace consecionariaYoBa
             frmBuscar.CargaGrillaAutos();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Consecionaria cons = new Consecionaria();
             Auto auto;
 
             string aux_cond;
-            int aux_km;
             string aux_equi = "";
+            int aux_km;            
             int aux_puertas;
             int idaux;
+            int precioaux = 0;
+            
+            //Validaciones del formulario
 
             if (radioNuevo.Checked == true)
             {
@@ -105,7 +72,6 @@ namespace consecionariaYoBa
             if (checkAir.Checked == true)
             {
                 aux_equi = ";" + "Airbags";
-
             }
 
             if (checkABS.Checked == true)
@@ -118,35 +84,34 @@ namespace consecionariaYoBa
                 Console.WriteLine($@"No se pudo convertir'{txtKm.Text}'");
             }
 
+            if (!Int32.TryParse(txtPrecio.Text, out precioaux))
+            {
+                Console.WriteLine($@"No se pudo convertir'{txtPrecio.Text}'");
+            }
+
+            //Vamos a obtener el ID para generar el auto
+
             idaux = cons.obtenerIdAuto();
 
-            auto = new Auto(idaux, txtMarca.Text, txtModelo.Text, comboColor.Text, aux_puertas, aux_cond, aux_km, txtDescripcion.Text, aux_equi);
-                               
+            auto = new Auto(idaux, txtMarca.Text, txtModelo.Text, comboColor.Text, aux_puertas, aux_cond, aux_km, txtDescripcion.Text, aux_equi, precioaux);
+
             //IMPORTANTE: agregar try catch a la siguiente llamada a método
+
+            //Agregamos el auto generado a la lista de autos de la consecionaria
+
             cons.agregarAutoConsecionaria(auto);
+            
+            //Grabamos la lista de autos de consecionaria en el archivo "autos"
             Administracion.actualizarAutosArchivo(cons);
 
             MessageBox.Show("Auto agregado Correctamente");
-            
-            txtMarca.Text = "";
-            txtModelo.Text = "";
-            comboColor.Text = "";
-            txtPuertas.Text = "";
-            radioNuevo.Checked = false;
-            radioUsado.Checked = false;
-            txtKm.Text = "";
-            txtDescripcion.Text = "";
-            checkABS.Checked = false;
-            checkAir.Checked = false;
+
+            //Inicializamos las variables del formulario
+
+            inicializarFormulario();
 
         } 
     
-
-        private void txtPuertas_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioUsado_CheckedChanged(object sender, EventArgs e)
         {
             lblKm.Visible = true;
@@ -157,6 +122,21 @@ namespace consecionariaYoBa
         {
             lblKm.Visible = false;
             txtKm.Visible = false;
+        }
+
+        public void inicializarFormulario()
+        {
+            txtMarca.Text = "";
+            txtModelo.Text = "";
+            comboColor.Text = null;
+            txtPuertas.Text = "";
+            radioNuevo.Checked = false;
+            radioUsado.Checked = false;
+            txtKm.Text = "";
+            txtDescripcion.Text = "";
+            checkABS.Checked = false;
+            checkAir.Checked = false;
+            txtPrecio.Text = "";
         }
     }
 }

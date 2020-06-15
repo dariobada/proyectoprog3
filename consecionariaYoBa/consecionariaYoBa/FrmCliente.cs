@@ -14,34 +14,56 @@ namespace consecionariaYoBa
     {
         private FrmMediosPago frmMediosPago;
         private FrmBuscar frmBuscar;
+        private int idVender;
+        private int numDoc;
+        private string nombreApellido;
+        private string tipoDoc;      
+        private string direccion;
 
         public FrmCliente(FrmBuscar buscar)
         {
             frmBuscar = buscar;
             InitializeComponent();
-            frmMediosPago = new FrmMediosPago(this);
+            frmMediosPago = new FrmMediosPago(this, frmBuscar);          
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+        public void cargarIdVenta(int id)
+        {      
+            idVender = id;
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        public void InicializarFormulario()
         {
-
-        }
-
-        private void txtDocumento_TextChanged(object sender, EventArgs e)
-        {
-
+            txtNombreApellido.Text = "";
+            txtDocumento.Text = "";
+            comboTipoDoc.Text = "";
+            txtDirec.Text = "";
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
+            nombreApellido = txtNombreApellido.Text;
+            tipoDoc = comboTipoDoc.Text;
+
+            if (!Int32.TryParse(txtDocumento.Text, out numDoc))
+            {
+                Console.WriteLine($@"No se pudo convertir'{txtDocumento.Text}'");
+            }
+
+            direccion = txtDirec.Text;
+            //Se invoca al siguiente método para enviarle al formulario MediosPago el ID de la venta
+            frmMediosPago.cargarIdVenta(idVender);
             frmMediosPago.Show();
             this.Hide();
 
+        }
+
+        public void obtenerDatosCliente(ref string na, ref string td, ref int nd, ref string d)
+        {
+            na = nombreApellido;
+            td = tipoDoc;
+            nd = numDoc;
+            d = direccion;
         }
 
         private void btnVolverCliente_Click(object sender, EventArgs e)

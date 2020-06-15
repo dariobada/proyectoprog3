@@ -26,22 +26,17 @@ namespace consecionariaYoBa
             if (txtUsuario.Text == "")
             {
                 MessageBox.Show("Debe ingresar un Nombre de Usuario", "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
-
             }
             else
             {
                 nombre = txtUsuario.Text;
                 frmSistema.Show();
                 this.Hide();
-                
-
             }
         }
         public string devolverUsuario()
         {
-
             return nombre;
-
         }
         
     }

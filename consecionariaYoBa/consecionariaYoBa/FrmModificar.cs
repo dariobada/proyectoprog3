@@ -14,10 +14,6 @@ namespace consecionariaYoBa
     {
         int idModificar = 0;
         private FrmBuscar frmBuscar;
-        public FrmModificar()
-        {
-            InitializeComponent();
-        }
 
         public FrmModificar(FrmBuscar buscar)
         {
@@ -31,12 +27,13 @@ namespace consecionariaYoBa
             this.Hide();
         }
 
-        public void precargarDatos(int auxid1, string auxmarca, string auxmodelo, string auxcolor,int auxpuertas,string auxcondicion,int auxkm,string auxequipamiento,string auxdescripcion)
+        public void precargarDatos(int auxid1, string auxmarca, string auxmodelo, string auxcolor, int precioaux, int auxpuertas,string auxcondicion,int auxkm,string auxequipamiento,string auxdescripcion)
         {
             idModificar = auxid1;
             txtMarca.Text = auxmarca;
             txtModelo.Text = auxmodelo;
             comboColor.Text = auxcolor;
+            txtPrecio.Text = precioaux.ToString();
 
             comboColor.Items.Add("Rojo");
             comboColor.Items.Add("Azul");
@@ -46,10 +43,10 @@ namespace consecionariaYoBa
             txtPuertas.Text = auxpuertas.ToString();
             txtKm.Text = auxkm.ToString();
             txtDescripcion.Text = auxdescripcion;
+
             if (auxcondicion == "Nuevo")
             {
-                radioNuevo.Checked = true;
-                
+                radioNuevo.Checked = true;               
             }
             else
             {
@@ -57,6 +54,7 @@ namespace consecionariaYoBa
                 lblKm.Visible = true;
                 txtKm.Visible = true;
             }
+
             if (auxequipamiento == ";ABS")
             {
                 checkABS.Checked = true;
@@ -77,8 +75,6 @@ namespace consecionariaYoBa
                 }
             }
             
-
-
         }
 
         private void radioUsado_CheckedChanged(object sender, EventArgs e)
@@ -98,11 +94,11 @@ namespace consecionariaYoBa
             Consecionaria cons = new Consecionaria();
             Auto auto;
 
-            string aux_cond;
-            int aux_km;
             string aux_equi = "";
-            int aux_puertas;
-            int idaux;
+            string aux_cond;
+            int aux_km;           
+            int aux_puertas;            
+            int precioaux;
 
             if (radioNuevo.Checked == true)
             {
@@ -119,10 +115,14 @@ namespace consecionariaYoBa
 
             }
 
+            if (!Int32.TryParse(txtPrecio.Text, out precioaux))
+            {
+                Console.WriteLine($@"No se pudo convertir'{txtPrecio.Text}'");
+            }
+
             if (checkAir.Checked == true)
             {
                 aux_equi = ";" + "Airbags";
-
             }
 
             if (checkABS.Checked == true)
@@ -135,12 +135,12 @@ namespace consecionariaYoBa
                 Console.WriteLine($@"No se pudo convertir'{txtKm.Text}'");
             }
 
-    
-
-            auto = new Auto(idModificar, txtMarca.Text, txtModelo.Text, comboColor.Text, aux_puertas, aux_cond, aux_km, txtDescripcion.Text, aux_equi);
+            auto = new Auto(idModificar, txtMarca.Text, txtModelo.Text, comboColor.Text, aux_puertas, aux_cond, aux_km, txtDescripcion.Text, aux_equi, precioaux);
 
             //IMPORTANTE: agregar try catch a la siguiente llamada a método
+            //Se actualiza los datos de auto seleccionado en la lista de autos de consecionaria
             cons.modificarAutoConsecionaria(auto, idModificar);
+            //Se graba el archivo de autos con la lista de autos de consecionaria
             Administracion.actualizarAutosArchivo(cons);
 
             MessageBox.Show("Auto modificado Correctamente");
@@ -155,6 +155,7 @@ namespace consecionariaYoBa
             txtDescripcion.Text = "";
             checkABS.Checked = false;
             checkAir.Checked = false;
+            txtPrecio.Text = "";
 
             frmBuscar.CargaGrillaAutos();
             frmBuscar.Show();

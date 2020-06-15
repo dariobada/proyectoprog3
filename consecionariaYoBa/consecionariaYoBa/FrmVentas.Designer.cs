@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.Label label2;
+            this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.colNombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTipoDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,15 +40,17 @@
             this.colMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnVolverVentas = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvVentas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvVentas.AllowUserToAddRows = false;
+            this.dgvVentas.AllowUserToDeleteRows = false;
+            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNombreApellido,
             this.colTipoDoc,
             this.colNumDoc,
@@ -58,10 +61,11 @@
             this.colMarca,
             this.colModelo,
             this.colPrecio});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 67);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1039, 371);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvVentas.Location = new System.Drawing.Point(12, 67);
+            this.dgvVentas.Name = "dgvVentas";
+            this.dgvVentas.ReadOnly = true;
+            this.dgvVentas.Size = new System.Drawing.Size(1039, 371);
+            this.dgvVentas.TabIndex = 0;
             // 
             // colNombreApellido
             // 
@@ -123,16 +127,6 @@
             this.colPrecio.Name = "colPrecio";
             this.colPrecio.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri Light", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Historial de Ventas";
-            // 
             // btnVolverVentas
             // 
             this.btnVolverVentas.Location = new System.Drawing.Point(940, 460);
@@ -143,17 +137,27 @@
             this.btnVolverVentas.UseVisualStyleBackColor = true;
             this.btnVolverVentas.Click += new System.EventHandler(this.btnVolverVentas_Click);
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(12, 9);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(187, 29);
+            label2.TabIndex = 29;
+            label2.Text = "Historial de ventas";
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 520);
+            this.Controls.Add(label2);
             this.Controls.Add(this.btnVolverVentas);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvVentas);
             this.Name = "FrmVentas";
-            this.Text = "FrmVentas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "Ventas realizadas";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +165,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombreApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumDoc;
@@ -172,7 +176,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn colModelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
-        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnVolverVentas;
     }
 }
