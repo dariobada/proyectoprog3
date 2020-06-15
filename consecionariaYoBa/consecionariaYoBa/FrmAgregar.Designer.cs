@@ -57,6 +57,16 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(253, 29);
+            label1.TabIndex = 13;
+            label1.Text = "Ingrese los datos del auto";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -66,7 +76,6 @@
             this.label2.Size = new System.Drawing.Size(50, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Marca";
-            
             // 
             // txtMarca
             // 
@@ -84,7 +93,6 @@
             this.label3.Size = new System.Drawing.Size(58, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Modelo";
-            
             // 
             // txtModelo
             // 
@@ -102,7 +110,6 @@
             this.label4.Size = new System.Drawing.Size(58, 19);
             this.label4.TabIndex = 1;
             this.label4.Text = "Puertas";
-            
             // 
             // txtPuertas
             // 
@@ -110,7 +117,6 @@
             this.txtPuertas.Name = "txtPuertas";
             this.txtPuertas.Size = new System.Drawing.Size(149, 20);
             this.txtPuertas.TabIndex = 2;
-            
             // 
             // label5
             // 
@@ -121,7 +127,6 @@
             this.label5.Size = new System.Drawing.Size(43, 19);
             this.label5.TabIndex = 1;
             this.label5.Text = "Color";
-           
             // 
             // comboColor
             // 
@@ -131,7 +136,6 @@
             this.comboColor.Name = "comboColor";
             this.comboColor.Size = new System.Drawing.Size(149, 21);
             this.comboColor.TabIndex = 3;
-            
             // 
             // groupBox1
             // 
@@ -200,7 +204,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 19);
             this.label6.TabIndex = 1;
-           
             // 
             // checkABS
             // 
@@ -212,7 +215,6 @@
             this.checkABS.TabIndex = 5;
             this.checkABS.Text = "ABS";
             this.checkABS.UseVisualStyleBackColor = true;
-            
             // 
             // checkAir
             // 
@@ -224,7 +226,6 @@
             this.checkAir.TabIndex = 5;
             this.checkAir.Text = "Airbags";
             this.checkAir.UseVisualStyleBackColor = true;
-            
             // 
             // btnAceptar
             // 
@@ -277,7 +278,6 @@
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 10;
             this.label8.Text = "Descripción";
-        
             // 
             // label7
             // 
@@ -288,7 +288,6 @@
             this.label7.Size = new System.Drawing.Size(49, 19);
             this.label7.TabIndex = 1;
             this.label7.Text = "Precio";
-          
             // 
             // txtPrecio
             // 
@@ -296,17 +295,6 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(149, 20);
             this.txtPrecio.TabIndex = 2;
-            
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(253, 29);
-            label1.TabIndex = 13;
-            label1.Text = "Ingrese los datos del auto";
             // 
             // FrmAgregar
             // 
@@ -333,7 +321,6 @@
             this.Controls.Add(this.label2);
             this.Name = "FrmAgregar";
             this.Text = "Agregar auto";
-            
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

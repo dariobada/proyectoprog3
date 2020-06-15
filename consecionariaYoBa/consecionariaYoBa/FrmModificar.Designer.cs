@@ -57,6 +57,16 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(365, 29);
+            label1.TabIndex = 27;
+            label1.Text = "Ingrese los datos del auto a modificar";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -192,7 +202,6 @@
             // 
             // comboColor
             // 
-            this.comboColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboColor.FormattingEnabled = true;
             this.comboColor.Location = new System.Drawing.Point(80, 153);
             this.comboColor.Name = "comboColor";
@@ -287,16 +296,6 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(149, 20);
             this.txtPrecio.TabIndex = 17;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(365, 29);
-            label1.TabIndex = 27;
-            label1.Text = "Ingrese los datos del auto a modificar";
             // 
             // FrmModificar
             // 

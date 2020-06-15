@@ -31,14 +31,14 @@ namespace consecionariaYoBa
         {
             idModificar = auxid1;
             txtMarca.Text = auxmarca;
-            txtModelo.Text = auxmodelo;
-            comboColor.Text = auxcolor;
+            txtModelo.Text = auxmodelo;                 
             txtPrecio.Text = precioaux.ToString();
 
             comboColor.Items.Add("Rojo");
             comboColor.Items.Add("Azul");
             comboColor.Items.Add("Verde");
             comboColor.Items.Add("Amarillo");
+            comboColor.Text = auxcolor;
 
             txtPuertas.Text = auxpuertas.ToString();
             txtKm.Text = auxkm.ToString();

@@ -41,6 +41,16 @@
             label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(256, 29);
+            label1.TabIndex = 11;
+            label1.Text = "Ingrese un medio de pago";
+            // 
             // radioEfectivo
             // 
             this.radioEfectivo.AutoSize = true;
@@ -72,7 +82,6 @@
             this.txtTarjeta.Size = new System.Drawing.Size(142, 20);
             this.txtTarjeta.TabIndex = 4;
             this.txtTarjeta.Visible = false;
-
             // 
             // lblTarjeta
             // 
@@ -83,7 +92,6 @@
             this.lblTarjeta.TabIndex = 5;
             this.lblTarjeta.Text = "Número de tarjeta";
             this.lblTarjeta.Visible = false;
-     
             // 
             // lblCuotas
             // 
@@ -105,7 +113,7 @@
             "12"});
             this.comboCuotas.Location = new System.Drawing.Point(36, 187);
             this.comboCuotas.Name = "comboCuotas";
-            this.comboCuotas.Size = new System.Drawing.Size(34, 21);
+            this.comboCuotas.Size = new System.Drawing.Size(44, 21);
             this.comboCuotas.TabIndex = 7;
             this.comboCuotas.Visible = false;
             // 
@@ -138,17 +146,6 @@
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Paso 2 / 2";
-   
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(256, 29);
-            label1.TabIndex = 11;
-            label1.Text = "Ingrese un medio de pago";
             // 
             // FrmMediosPago
             // 
